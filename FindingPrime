@@ -1,0 +1,37 @@
+import time
+
+lim = int(input('Digite até que numero deseja-se obter os numeros primos: '))
+n=1
+cont= 0
+cont2 = 0
+j = 1
+
+print('Se Você deseja mostrar a sequencia de numeros primos')
+print('Digite: [0] para NAO')
+print('Digite: [1] para SIM')
+a = int(input('='))
+if a == 1:
+    print('Os numeros primos menores que {} são:'.format(lim))
+ini = time.time()
+lasttime = ini
+
+for d in range(1,lim+1):
+    for c in range(1,n+1):
+        if n % c == 0:
+            cont = cont+ 1
+    if cont == 2:
+        #mostrador da sequencia de primos
+        if a == 1:
+            print(n,end= ' ')
+        cont2 = cont2 +1
+    #programacao da leitura parcial dos tempos de itervalo de 10000 numeros
+    if d > 10000*j:
+        parc = time.time()
+        print(' O tempo gasto para rodar o codigo de {} a {} é de aproximadamente {:.2f} segundos'.format(10000*(j-1),10000*j,parc-lasttime))
+        j += 1
+        lasttime = parc
+    cont = 0
+    n = n+1
+fim = time.time()
+print('\n Existem \033[31m {} \033[30m numeros primos entre 1 e {}'.format(cont2,lim))
+print('\033[37m O tempo de resposta parar rodar o código é de {:.2f} segundos'.format(fim-ini))
